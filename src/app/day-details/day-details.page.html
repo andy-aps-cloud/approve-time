@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{employee?.firstName}} {{employee?.lastName}} </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card class="welcome-card" *ngIf="timeSheet">
+    <ion-card-header>
+      <ion-card-subtitle>{{timeSheet.date | date: 'EEEE'}}</ion-card-subtitle>
+      <ion-card-title>{{timeSheet.date | date: 'MM/dd/yyyy'}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list lines="none" *ngIf="timeSheet.tasks">
+        <ion-list-header>
+          <ion-label>Tasks</ion-label>
+        </ion-list-header>
+        <ion-item *ngFor="let task of timeSheet.tasks">
+            <ion-chip color="tertiary">
+                <ion-label>{{task.hours}} HRS</ion-label>
+              </ion-chip>
+          <ion-label>{{task.chargeType}} - {{task.chargeNumber}}</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

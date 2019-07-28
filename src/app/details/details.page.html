@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{employee?.firstName}} {{employee?.lastName}} </ion-title>
+    <ion-avatar slot="end">
+      <img src="{{employee?.profilePicture}}">
+    </ion-avatar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <!-- <ion-fab-button color="success">
+      <ion-icon name="checkmark"></ion-icon>
+    </ion-fab-button> -->
+  </ion-fab>
+  <ion-card class="welcome-card" *ngFor="let timeSheet of employeeTimeSheet">
+    <ion-card-header>
+      <ion-card-subtitle>{{timeSheet.date | date: 'EEEE'}}</ion-card-subtitle>
+      <ion-card-title>{{timeSheet.date | date: 'MM/dd/yyyy'}}</ion-card-title>
+      <ion-chip color="primary">
+        <ion-label>8 HRS</ion-label>
+      </ion-chip>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list lines="none" *ngIf="timeSheet.tasks">
+        <ion-list-header>
+          <ion-label>Tasks</ion-label>
+        </ion-list-header>
+        <ion-item *ngFor="let task of timeSheet.tasks">
+          <ion-chip color="primary">
+            <ion-label>{{task.hours}} HRS</ion-label>
+          </ion-chip>
+          <ion-label>{{task.chargeType}} - {{task.chargeNumber}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label [color]="timeSheet.approvalStatus == false? 'warning': 'success'">
+            {{timeSheet.approvalStatus == false? 'Need Approval': 'Approved'}}</ion-label>
+          <ion-toggle color="success" [(ngModel)]="timeSheet.approvalStatus"
+            (ionChange)="updateTimeSheet(timeSheet)">
+            <!-- (ionChange)="change($event.detail)" -->
+          </ion-toggle>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+  <br>
+  <br>
+  <!-- <ion-grid>
+    <ion-row align-items-center *ngFor="let timeSheet of timeSheets" (click)="goToDayDetails(timeSheet)">
+      <ion-col size="3">
+        <ion-button size="large" color="light">{{timeSheet.date | date: 'MM/dd'}}<br>{{timeSheet.date | date: 'EEE'}}
+        </ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-item lines='none'>
+          <ion-label color="primary" large> 8.0 Hrs</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label [color]="timeSheet.approvalStatus == false? 'warning': 'success'">
+            {{timeSheet.approvalStatus == false? 'Need Approval': 'Approved'}}</ion-label>
+          <ion-toggle *ngIf="timeSheet.approvalStatus == false" color="success"></ion-toggle>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid> -->
+</ion-content>
