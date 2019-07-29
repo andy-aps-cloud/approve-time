@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AppService } from '../service/app.service';
 import { NavController } from '@ionic/angular';
 import { Network } from '@ngx-pwa/offline';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-employees',
@@ -27,7 +28,8 @@ export class EmployeesPage {
     console.log("EmployeesPage");
     this.appService.getEmployees().then(
       employees => {
-        this.employees = employees;
+        let e = _.orderBy(employees, ['firstName'],['asc']); 
+        this.employees = e;
         console.log(this.employees);
       }
     )

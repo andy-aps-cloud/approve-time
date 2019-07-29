@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import * as _ from 'lodash';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +22,7 @@ export class AppService {
 
   async getTimeSheets() {
 
-    const response = await fetch("https://api.myjson.com/bins/yj1n1");
+    const response = await fetch("https://api.myjson.com/bins/11t269");
     let r = await response.json();
     this.timeSheets = r;
     return this.timeSheets;
@@ -50,21 +51,29 @@ export class AppService {
   }
 
 
-  updateTimeSheet(employeeTimeSheets) {
-    
-    fetch('https://api.myjson.com/bins/yj1n1', {
+  async updateTimeSheet(employeeTimeSheets) {
+
+    this.timeSheets = await _.remove(this.timeSheets, ts => {
+      return ts.employeeId != employeeTimeSheets[0].employeeId
+    })
+
+    this.timeSheets = this.timeSheets.concat(employeeTimeSheets);
+
+
+    fetch('https://api.myjson.com/bins/11t269', {
       method: 'put',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(employeeTimeSheets)
+      body: JSON.stringify(this.timeSheets)
     })
       .then(response => {
         response.json();
         this.getTimeSheets();
       })
       .then(data => console.log('data is', data))
-      .catch(error => console.log('error is', error));   
+      .catch(error => console.log('error is', error));
+
   }
 
 }

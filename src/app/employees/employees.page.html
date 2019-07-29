@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-title>
-      EMPLOYEES
+      EMPLOYEES ({{employees?.length}})
     </ion-title>
     <ion-buttons slot="end">
       <div *ngIf="online$ | async; else offline"></div>
@@ -17,7 +17,7 @@
 <ion-content>
   <ion-list>
     <ion-list-header>
-      <ion-label color="primary">Employees ({{employees.length}})</ion-label>
+      <ion-label color="primary">Employees to approve</ion-label>
     </ion-list-header>
     <ion-item detail *ngFor="let employee of employees" (click)="goToDetails(employee)">
       <ion-avatar slot="start">

@@ -93,5 +93,195 @@
             }
         ],
         "approvalStatus": false
+    },
+    {
+        "employeeId": "Z10623",
+        "date": "7/22/2019",
+        "tasks": [
+            {
+                "taskId": 1,
+                "chargeType": "REG",
+                "chargeNumber": "T123445M",
+                "hours": 4
+            },
+            {
+                "taskId": 2,
+                "chargeType": "REG",
+                "chargeNumber": "T123455M",
+                "hours": 4
+            }
+        ],
+        "approvalStatus": true
+    },
+    {
+        "employeeId": "Z10623",
+        "date": "7/23/2019",
+        "tasks": [
+            {
+                "taskId": 1,
+                "chargeType": "REG",
+                "chargeNumber": "T123465M",
+                "hours": 4
+            },
+            {
+                "taskId": 2,
+                "chargeType": "REG",
+                "chargeNumber": "T123445M",
+                "hours": 4
+            }
+        ],
+        "approvalStatus": true
+    },
+    {
+        "employeeId": "Z10623",
+        "date": "7/24/2019",
+        "tasks": [
+            {
+                "taskId": 1,
+                "chargeType": "REG",
+                "chargeNumber": "T123475M",
+                "hours": 4
+            },
+            {
+                "taskId": 2,
+                "chargeType": "REG",
+                "chargeNumber": "T123475M",
+                "hours": 4
+            }
+        ],
+        "approvalStatus": false
+    },
+    {
+        "employeeId": "Z10623",
+        "date": "7/25/2019",
+        "tasks": [
+            {
+                "taskId": 1,
+                "chargeType": "REG",
+                "chargeNumber": "T123485M",
+                "hours": 4
+            },
+            {
+                "taskId": 2,
+                "chargeType": "REG",
+                "chargeNumber": "T123445M",
+                "hours": 4
+            }
+        ],
+        "approvalStatus": false
+    },
+    {
+        "employeeId": "Z10623",
+        "date": "7/26/2019",
+        "tasks": [
+            {
+                "taskId": 1,
+                "chargeType": "REG",
+                "chargeNumber": "T123495M",
+                "hours": 4
+            },
+            {
+                "taskId": 2,
+                "chargeType": "REG",
+                "chargeNumber": "T123445M",
+                "hours": 4
+            }
+        ],
+        "approvalStatus": false
+    },
+    {
+        "employeeId": "Z13956",
+        "date": "7/22/2019",
+        "tasks": [
+            {
+                "taskId": 1,
+                "chargeType": "REG",
+                "chargeNumber": "T123445M",
+                "hours": 4
+            },
+            {
+                "taskId": 2,
+                "chargeType": "REG",
+                "chargeNumber": "T123455M",
+                "hours": 4
+            }
+        ],
+        "approvalStatus": true
+    },
+    {
+        "employeeId": "Z13956",
+        "date": "7/23/2019",
+        "tasks": [
+            {
+                "taskId": 1,
+                "chargeType": "REG",
+                "chargeNumber": "T123465M",
+                "hours": 4
+            },
+            {
+                "taskId": 2,
+                "chargeType": "REG",
+                "chargeNumber": "T123445M",
+                "hours": 4
+            }
+        ],
+        "approvalStatus": true
+    },
+    {
+        "employeeId": "Z13956",
+        "date": "7/24/2019",
+        "tasks": [
+            {
+                "taskId": 1,
+                "chargeType": "REG",
+                "chargeNumber": "T123475M",
+                "hours": 4
+            },
+            {
+                "taskId": 2,
+                "chargeType": "REG",
+                "chargeNumber": "T123475M",
+                "hours": 4
+            }
+        ],
+        "approvalStatus": false
+    },
+    {
+        "employeeId": "Z13956",
+        "date": "7/25/2019",
+        "tasks": [
+            {
+                "taskId": 1,
+                "chargeType": "REG",
+                "chargeNumber": "T123485M",
+                "hours": 4
+            },
+            {
+                "taskId": 2,
+                "chargeType": "REG",
+                "chargeNumber": "T123445M",
+                "hours": 4
+            }
+        ],
+        "approvalStatus": false
+    },
+    {
+        "employeeId": "Z13956",
+        "date": "7/26/2019",
+        "tasks": [
+            {
+                "taskId": 1,
+                "chargeType": "REG",
+                "chargeNumber": "T123495M",
+                "hours": 4
+            },
+            {
+                "taskId": 2,
+                "chargeType": "REG",
+                "chargeNumber": "T123445M",
+                "hours": 4
+            }
+        ],
+        "approvalStatus": false
     }
 ]
