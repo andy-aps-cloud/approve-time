@@ -3,6 +3,14 @@
     <ion-title>
       EMPLOYEES
     </ion-title>
+    <ion-buttons slot="end">
+      <div *ngIf="online$ | async; else offline"></div>
+      <ng-template #offline>
+        <ion-chip color="warning">
+          <ion-label>Offline</ion-label>
+        </ion-chip>
+      </ng-template>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -11,24 +19,14 @@
     <ion-list-header>
       <ion-label color="primary">Employees ({{employees.length}})</ion-label>
     </ion-list-header>
-    <!-- <ion-item *ngFor="let employee of employees">
-      <ion-avatar slot="start">
-        <img src="{{employee.profilePicture}}">
-      </ion-avatar>
-      <ion-label>
-        <h3>{{employee.firstName}} {{employee.lastName}}</h3>
-        <p>{{employee.jobTitle}}</p>
-        <p>{{employee.departmentName}}</p>
-      </ion-label>
-    </ion-item> -->
     <ion-item detail *ngFor="let employee of employees" (click)="goToDetails(employee)">
       <ion-avatar slot="start">
         <img src="{{employee.profilePicture}}">
       </ion-avatar>
       <ion-label>
-        <h2>{{employee.firstName}} {{employee.lastName}}</h2>
-        <p>{{employee.jobTitle}}</p>
-        <p>{{employee.departmentName}}</p>
+        <h1>{{employee.firstName}} {{employee.lastName}}</h1>
+        <h2>{{employee.jobTitle}}</h2>
+        <h3>{{employee.departmentName}}</h3>
       </ion-label>
     </ion-item>
   </ion-list>

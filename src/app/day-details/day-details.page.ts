@@ -16,14 +16,16 @@ export class DayDetailsPage implements OnInit {
     private appService: AppService,
     private nav: NavController) { }
 
-   async ngOnInit() {
+  async ngOnInit() {
+
+    /*
     let id = this.route.snapshot.params['employeeId'];
     
     this.employee = await this.appService.getEmployeeById(id);
     console.log(this.employee);
 
     this.timeSheet = this.appService.getTimeSheet();
-
+    */
   }
 
 }

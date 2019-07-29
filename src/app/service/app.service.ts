@@ -59,9 +59,12 @@ export class AppService {
       },
       body: JSON.stringify(employeeTimeSheets)
     })
-      .then(response => response.json())
+      .then(response => {
+        response.json();
+        this.getTimeSheets();
+      })
       .then(data => console.log('data is', data))
-      .catch(error => console.log('error is', error));
-   }
+      .catch(error => console.log('error is', error));   
+  }
 
 }

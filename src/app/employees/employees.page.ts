@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from '../service/app.service';
 import { NavController } from '@ionic/angular';
+import { Network } from '@ngx-pwa/offline';
 
 @Component({
   selector: 'app-employees',
@@ -10,12 +11,20 @@ import { NavController } from '@ionic/angular';
 
 export class EmployeesPage {
   employees = [];
+  online$ = this.network.onlineChanges;
 
-  constructor(private appService: AppService, private nav: NavController) {
+  constructor(private appService: AppService,
+    private nav: NavController,
+    private network: Network) {
   }
 
   ngOnInit() {
     console.log("in ngOnInit");
+   
+  }
+
+  ionViewDidEnter() {
+    console.log("EmployeesPage");
     this.appService.getEmployees().then(
       employees => {
         this.employees = employees;

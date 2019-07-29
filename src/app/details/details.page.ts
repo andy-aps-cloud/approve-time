@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AppService } from '../service/app.service';
 import { NavController } from '@ionic/angular';
+import { Network } from '@ngx-pwa/offline';
 
 @Component({
   selector: 'app-details',
@@ -11,10 +12,12 @@ import { NavController } from '@ionic/angular';
 export class DetailsPage implements OnInit {
   employee: any;
   employeeTimeSheet: any = [];
+  online$ = this.network.onlineChanges;
 
   constructor(private route: ActivatedRoute,
     private appService: AppService,
-    private nav: NavController) { }
+    private nav: NavController,
+    private network: Network) { }
 
   async ngOnInit() {
     let id = this.route.snapshot.params['employeeId'];
@@ -33,8 +36,16 @@ export class DetailsPage implements OnInit {
     this.nav.navigateForward(`/day-details/${this.employee.employeeId}`);
   }
 
-  updateTimeSheet(timeSheet){
-    console.log(timeSheet);
+  // updateTimeSheet(eventDetail, timeSheet){
+  //   console.log(eventDetail);
+  //   this.appService.updateTimeSheet(this.employeeTimeSheet);
+
+  // }
+
+  updateTimeSheet(timeSheet) {
+    timeSheet.approvalStatus = !timeSheet.approvalStatus;
+    console.log(timeSheet.approvalStatus);
+    
     this.appService.updateTimeSheet(this.employeeTimeSheet);
 
   }
