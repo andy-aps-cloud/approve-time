@@ -4,16 +4,16 @@
       <ion-back-button></ion-back-button>
     </ion-buttons>
     <ion-title>{{employee?.firstName}}</ion-title>
-    <!-- <ion-avatar slot="end" *ngIf="online$ | async;" >
-      <img src="{{employee?.profilePicture}}">
-    </ion-avatar> -->
     <ion-buttons slot="end">
-      <div *ngIf="online$ | async; else offline"></div>
+      <ion-chip *ngIf="this.network?.online == false" color="danger" outline>
+        <ion-label>Offline</ion-label>
+      </ion-chip>
+      <!-- <div *ngIf="online$ | async; else offline"></div>
       <ng-template #offline>
-        <ion-chip color="warning">
+        <ion-chip color="danger" outline>
           <ion-label>Offline</ion-label>
         </ion-chip>
-      </ng-template>
+      </ng-template> -->
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -28,10 +28,10 @@
     <ion-card-header>
       <ion-card-subtitle>{{timeSheet.date | date: 'EEEE'}}</ion-card-subtitle>
       <ion-card-title>{{timeSheet.date | date: 'MM/dd/yyyy'}}</ion-card-title>
-      <ion-chip outline [color]="timeSheet.approvalStatus == false? 'warning': 'success'">
+      <ion-chip outline color="success" *ngIf="timeSheet.approvalStatus == true" (click)="updateTimeSheet(timeSheet)">
         <ion-icon [name]="timeSheet.approvalStatus == false? ' ': 'checkmark'"></ion-icon>
         <ion-label>
-          {{timeSheet.approvalStatus == false? 'NEED APPROVAL': 'APPROVED'}} - 8 Hrs
+          Approved for 8 Hrs
         </ion-label>
       </ion-chip>
       <!-- <ion-label [color]="timeSheet.approvalStatus == false? 'warning': 'success'">
@@ -43,18 +43,23 @@
           <ion-label>Tasks</ion-label>
         </ion-list-header>
         <ion-item *ngFor="let task of timeSheet.tasks">
-          <ion-chip color="primary">
+          <ion-chip [color]="timeSheet.approvalStatus == false? 'warning': 'success'">
             <ion-label>{{task.hours}} HRS</ion-label>
           </ion-chip>
           <ion-label>{{task.chargeType}} - {{task.chargeNumber}}</ion-label>
         </ion-item>
         <ion-checkbox *ngIf="false" [(ngModel)]="timeSheet.approvalStatus"></ion-checkbox>
         <br>
-        <ion-button expand="block" fill="outline" [color]="timeSheet.approvalStatus == false? 'success': 'danger'"
+        <ion-button *ngIf="timeSheet.approvalStatus == false" expand="block" fill="outline" color="success"
+          (click)="updateTimeSheet(timeSheet)">
+          <ion-icon name="thumbs-up"></ion-icon>
+          <ion-label>{{timeSheet.approvalStatus == false? 'Approve': 'Reject'}}</ion-label>
+        </ion-button>
+        <!-- <ion-button expand="block" fill="outline" [color]="timeSheet.approvalStatus == false? 'success': 'danger'"
           (click)="updateTimeSheet(timeSheet)">
           <ion-icon [name]="timeSheet.approvalStatus == false? 'thumbs-up': 'thumbs-down'"></ion-icon>
           <ion-label>{{timeSheet.approvalStatus == false? 'Approve': 'Reject'}}</ion-label>
-        </ion-button>
+        </ion-button> -->
         <!-- <ion-toggle color="success" [(ngModel)]="timeSheet.approvalStatus"
               (click)="updateTimeSheet($event.detail, timeSheet)"></ion-toggle>
             (ionChange)="updateTimeSheet($event.detail, timeSheet)">

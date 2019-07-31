@@ -14,9 +14,11 @@ export class EmployeesPage {
   employees = [];
   online$ = this.network.onlineChanges;
 
+  
   constructor(private appService: AppService,
     private nav: NavController,
     private network: Network) {
+
   }
 
   ngOnInit() {

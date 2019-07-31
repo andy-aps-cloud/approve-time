@@ -1,7 +1,7 @@
 {
   "index": "/index.html",
   "appData": {
-    "updateMessage": "Checking for update every minute!"
+    "updateMessage": "Update icons"
   },
   "assetGroups": [
     {
@@ -37,6 +37,7 @@
       "cacheConfig": {
         "maxSize": 250,
         "maxAge": "1d",
+        "timeout": "5s",
         "strategy": "freshness"
       }
     },
