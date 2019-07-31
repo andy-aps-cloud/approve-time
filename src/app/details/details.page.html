@@ -5,7 +5,7 @@
     </ion-buttons>
     <ion-title>{{employee?.firstName}}</ion-title>
     <ion-buttons slot="end">
-      <ion-chip *ngIf="this.network?.online == false" color="danger" outline>
+      <ion-chip *ngIf="this.network?.online == false" color="light" outline>
         <ion-label>Offline</ion-label>
       </ion-chip>
       <!-- <div *ngIf="online$ | async; else offline"></div>
@@ -19,6 +19,9 @@
 </ion-header>
 
 <ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <!-- <ion-fab-button color="success">
       <ion-icon name="checkmark"></ion-icon>

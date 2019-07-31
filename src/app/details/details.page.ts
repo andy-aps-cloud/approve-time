@@ -71,6 +71,16 @@ export class DetailsPage implements OnInit {
     }
   }
 
+  doRefresh(event) {
+    console.log('Begin refresher');
+
+    setTimeout(async () => {
+      this.employeeTimeSheet = await this.appService.getTimeSheetByEmployeeById(this.employee.employeeId);
+      event.target.complete();
+      console.log('doRefresh operation has ended');
+    }, 1000);
+  }
+
   async handleNetWorkChanged() {
 
     if (this.network.online) {

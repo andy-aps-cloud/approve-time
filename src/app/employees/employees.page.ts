@@ -14,7 +14,8 @@ export class EmployeesPage {
   employees = [];
   online$ = this.network.onlineChanges;
 
-  
+  supervisor: any;
+
   constructor(private appService: AppService,
     private nav: NavController,
     private network: Network) {
@@ -23,16 +24,26 @@ export class EmployeesPage {
 
   ngOnInit() {
     console.log("in ngOnInit");
-   
+
   }
 
+  
   ionViewDidEnter() {
     console.log("EmployeesPage");
     this.appService.getEmployees().then(
-      employees => {
-        let e = _.orderBy(employees, ['firstName'],['asc']); 
+      async employees => {
+        let e = _.orderBy(employees, ['firstName'], ['asc']);
+        
+
+        let a = await _.remove(e, s => {
+          return s.employeeId == "Z13956";
+        })
+
+        this.supervisor = a[0];
         this.employees = e;
+        console.log(this.supervisor);
         console.log(this.employees);
+
       }
     )
   }

@@ -76,4 +76,44 @@ export class AppService {
 
   }
 
+  resetTimeSheets(employeeTimeSheets) {
+
+    fetch('https://api.myjson.com/bins/11t269', {
+      method: 'put',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(employeeTimeSheets)
+    })
+      .then(response => {
+        response.json();
+      })
+      .then(data => {
+        console.log('data is', data);
+      }
+        
+      )
+      .catch(error => console.log('error is', error));
+  }
+
+  resetEmployees(employees) {
+
+    fetch('https://api.myjson.com/bins/1bbudh', {
+      method: 'put',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(employees)
+    })
+      .then(response => {
+        response.json();
+      })
+      .then(data => {
+        console.log('data is', data);
+      }
+        
+      )
+      .catch(error => console.log('error is', error));
+  }
+
 }

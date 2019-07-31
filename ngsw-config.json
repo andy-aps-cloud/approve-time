@@ -1,7 +1,7 @@
 {
   "index": "/index.html",
   "appData": {
-    "updateMessage": "Update icons"
+    "updateMessage": "Update Home & Team screens"
   },
   "assetGroups": [
     {
@@ -10,9 +10,12 @@
       "resources": {
         "files": [
           "/favicon.ico",
+          "/favicon.png",
           "/index.html",
+          "/icon-192x192.png",
           "/*.css",
-          "/*.js"
+          "/*.js",
+          "/mobile1.jpg","/mobile2.jpg","/mobile3.jpg"
         ]
       }
     },
@@ -39,19 +42,6 @@
         "maxAge": "1d",
         "timeout": "5s",
         "strategy": "freshness"
-      }
-    },
-    {
-      "name": "router-calls",
-      "urls": [
-        "/",
-        "tabs/employees",
-        "/employee-details/*"
-      ],
-      "cacheConfig": {
-        "maxSize": 250,
-        "maxAge": "1d",
-        "strategy": "performance"
       }
     }
   ]

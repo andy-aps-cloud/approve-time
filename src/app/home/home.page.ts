@@ -2,7 +2,6 @@ import { Component, ApplicationRef } from '@angular/core';
 import { Subscription, concat, interval } from 'rxjs';
 import { first } from 'rxjs/operators';
 import { NavController, ToastController, AlertController } from '@ionic/angular';
-import { Network } from '@ngx-pwa/offline';
 import { SwUpdate, UpdateAvailableEvent } from '@angular/service-worker';
 
 @Component({
@@ -18,16 +17,10 @@ export class HomePage {
     private alertController: AlertController,
     private appRef: ApplicationRef,
     private nav: NavController,
-    private network: Network,
     private toastController: ToastController,
     private updater: SwUpdate) { }
 
   ngOnInit(): void {
-    // this.subscriptions.push(
-    //   this.eventService.getAll().subscribe(e => {
-    //     this.events.push(e);
-    //   }));
-
     this.initUpdater();
   }
 
